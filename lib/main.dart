@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'model/module.dart';
 import 'services/module.dart';
+import 'pages/module.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'EDWIN DEMO',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MyHomePage(title: 'EDWIN INTERVIEW'),
     );
   }
 }
@@ -52,23 +53,6 @@ class _MyHomePageState extends State<MyHomePage> {
   UserRepository userRepository=new UserRepository();
   late Future<List<Users>> future_users;
 
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-    future_users=this.getUsers();
-  }
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -84,26 +68,10 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: FutureBuilder(
-          future: this.future_users,
-          builder: (context,snapshot){
+      body: Dashboard()
 
-          },
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
-  Future<List<Users>> getUsers() async{
-    List<Users> users= await userRepository.getUsers();
-    return users;
-  }
+
 }

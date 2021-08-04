@@ -1,19 +1,19 @@
 
 class Geo{
   String lat;
-  String long;
+  String lng;
 
-  Geo({required this.lat,required this.long});
+  Geo({required this.lat,required this.lng});
 
   Map<String,dynamic> toJson()=>{
     'lat':this.lat,
-    'long':this.long
+    'lng':this.lng
   };
 
   factory Geo.fromJson(Map<String,dynamic> parsedJson){
     return Geo(
       lat: parsedJson['lat'],
-      long:parsedJson['long']
+      lng:parsedJson['lng']
     );
   }
 }

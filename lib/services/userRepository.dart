@@ -10,13 +10,19 @@ class UserRepository{
   UserRepository(){}
 
 Future<List<Users>> getUsers() async{
-    http.Response response=await http.post(Uri.parse(url),
-    headers: {'header':'Accept'});
+    try{
+      http.Response response=await http.get(Uri.parse(url),
+          headers: {'header':'Accept'});
 
-    var data=jsonDecode(response.body);
-    var users=data as List;
-    List<Users> list_users=users.map((e) => Users.fromJson(e)).toList();
 
-    return list_users;
+      var data=jsonDecode(response.body);
+      print(data);
+      var users=data as List;
+      List<Users> list_users=users.map((e) => Users.fromJson(e)).toList();
+      return list_users;
+    }
+    catch(e,stacktrace){
+    print(stacktrace);
+    return [];
 }
-}
+}}
