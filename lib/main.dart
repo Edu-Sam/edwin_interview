@@ -49,10 +49,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  UserRepository userRepository=new UserRepository();
-  late Future<List<Users>> future_users;
-
 
   @override
   Widget build(BuildContext context) {
